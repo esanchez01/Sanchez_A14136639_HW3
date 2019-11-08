@@ -3,7 +3,7 @@ Highcharts.chart('first-left', {
     chart: {
         type: 'area',
         width: 1000,
-        height: 350,
+        height: 365,
         backgroundColor: 'transparent'
     },
     title: {
@@ -32,8 +32,9 @@ Highcharts.chart('first-left', {
     },
 
     yAxis: {
+        min: -1000,
         max: 10000,
-        tickAmount: 11,
+        tickAmount: 12,
         title: {
             text: ''
         }
@@ -54,7 +55,18 @@ Highcharts.chart('first-left', {
                 }
             }
         },
-        
+        series: {
+            states: {
+                hover: {
+                    enabled: false
+                }
+            },
+            events: {
+                mouseOver: function () {
+                    //document.getElementById('solar-value').innerHTML = this.series[0].y;
+                }
+            }
+        }
     },
 
     tooltip: {
@@ -64,9 +76,31 @@ Highcharts.chart('first-left', {
                 y: 10
             };
         },
+        formatter: function() {
+            document.getElementById('total-power').innerHTML = this.total.toFixed(2)
+            document.getElementById('solar-value').innerHTML = this.series.chart.series[0].processedYData[this.point.index].toFixed(0)
+            document.getElementById('solar-percent').innerHTML = ((this.series.chart.series[0].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
+            document.getElementById('wind-value').innerHTML = this.series.chart.series[1].processedYData[this.point.index].toFixed(0)
+            document.getElementById('wind-percent').innerHTML = ((this.series.chart.series[1].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
+            document.getElementById('hydro-value').innerHTML = this.series.chart.series[2].processedYData[this.point.index].toFixed(0)
+            document.getElementById('hydro-percent').innerHTML = ((this.series.chart.series[2].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
+            document.getElementById('gas-value').innerHTML = this.series.chart.series[3].processedYData[this.point.index].toFixed(0)
+            document.getElementById('gas-percent').innerHTML = ((this.series.chart.series[3].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
+            document.getElementById('distillate-value').innerHTML = this.series.chart.series[4].processedYData[this.point.index].toFixed(2)
+            document.getElementById('distillate-percent').innerHTML = ((this.series.chart.series[4].processedYData[this.point.index]/this.total)*100).toFixed(4)+'%'
+            document.getElementById('coal-value').innerHTML = this.series.chart.series[5].processedYData[this.point.index].toFixed(0)
+            document.getElementById('coal-percent').innerHTML = ((this.series.chart.series[5].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
+            document.getElementById('export-value').innerHTML = this.series.chart.series[6].processedYData[this.point.index].toFixed(0)
+            document.getElementById('export-percent').innerHTML = ((this.series.chart.series[6].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
+            document.getElementById('pump-value').innerHTML = this.series.chart.series[7].processedYData[this.point.index].toFixed(0)
+            document.getElementById('pump-percent').innerHTML = ((this.series.chart.series[7].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
+            document.getElementById('load-value').innerHTML = (this.series.chart.series[6].processedYData[this.point.index]+this.series.chart.series[7].processedYData[this.point.index]).toFixed(0)
+            document.getElementById('renewables-percent').innerHTML = (((this.series.chart.series[0].processedYData[this.point.index]/this.total)*100)+((this.series.chart.series[1].processedYData[this.point.index]/this.total)*100)+((this.series.chart.series[2].processedYData[this.point.index]/this.total)*100)).toFixed(1)+'%'
+            document.getElementById('sources-value').innerHTML = (this.series.chart.series[0].processedYData[this.point.index]+this.series.chart.series[1].processedYData[this.point.index]+this.series.chart.series[2].processedYData[this.point.index]+this.series.chart.series[3].processedYData[this.point.index]+this.series.chart.series[4].processedYData[this.point.index]+this.series.chart.series[5].processedYData[this.point.index]).toFixed(0)
+            return Highcharts.dateFormat('%e %b, %I:%M%p', this.x) + ' Total:' + this.total + 'MW'
+        },
         backgroundColor: 'None',
         borderWidth: 0,
-        pointFormat: 'Total: {point.total}MW',
         shadow: false,
         style: {
             fontSize: '16px'
@@ -79,6 +113,21 @@ Highcharts.chart('first-left', {
         color: 'yellow',
         pointStart: Date.UTC(2019, 9, 20, 7),
         pointInterval: 1 * 3600 * 500,
+        marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: false
+              }
+            }
+        },
+        //point: {
+        //    events: {
+        //       mouseOver: function() {
+        //            document.getElementById('solar-value').innerHTML = this.y;
+        //       }
+        //    },
+        //},
         data: [0,0,0,0,0,0,0,0,0,19.57,69.27,212.11,388.19,599.36,769.74,
             966.56,1138.24,1276.75,1381.1,1435.16,1492.56,1515.24,1521.95,
             1500.13,1474.11,1421.87,1332.08,1222.98,1090.91,933.76,749.95,
@@ -109,6 +158,21 @@ Highcharts.chart('first-left', {
         color: 'green',
         pointStart: Date.UTC(2019, 9, 20, 7),
         pointInterval: 1 * 3600 * 500,
+        marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: false
+              }
+            }
+        },
+        //point: {
+        //    events: {
+        //       mouseOut: function() {
+        //            document.getElementById('wind-value').innerHTML = this.y;
+        //       }
+        //    }
+        //},
         data: [ 625.32,  601.9 ,  575.45,  547.49,  518.8 ,  503.14,  495.12,
             514.98,  506.26,  531.26,  557.18,  545.23,  487.26,  458.06,
             423.41,  395.2 ,  384.94,  300.92,  206.19,  119.98,   76.72,
@@ -162,6 +226,14 @@ Highcharts.chart('first-left', {
         color: 'steelblue',
         pointStart: Date.UTC(2019, 9, 20, 7),
         pointInterval: 1 * 3600 * 500,
+        marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: false
+              }
+            }
+        },
         data: [  62.3 ,   62.5 ,   62.6 ,   62.4 ,   62.6 ,   62.1 ,   62.4 ,
             62.1 ,   62.3 ,  148.3 ,  302.21,  250.77,  538.83,  588.43,
            148.87,   62.  ,   61.7 ,   63.6 ,   62.6 ,  166.17,  111.32,
@@ -215,6 +287,14 @@ Highcharts.chart('first-left', {
         color: 'sandybrown',
         pointStart: Date.UTC(2019, 9, 20, 7),
         pointInterval: 1 * 3600 * 500,
+        marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: false
+              }
+            }
+        },
         data: [190.24, 232.19, 209.24, 258.21, 298.21, 340.24, 315.21, 369.21,
             418.22, 420.18, 418.21, 418.17, 420.18, 419.22, 419.14, 419.15,
             417.08, 412.18, 417.08, 418.14, 420.12, 418.12, 419.15, 405.13,
@@ -262,6 +342,14 @@ Highcharts.chart('first-left', {
         color: 'red',
         pointStart: Date.UTC(2019, 9, 20, 7),
         pointInterval: 1 * 3600 * 500,
+        marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: false
+              }
+            }
+        },
         data: [ 0.03,  0.03,  0.03,  0.04,  0.04,  0.04,  0.03,  0.03,  0.04,
             0.04,  0.04,  0.04,  0.03,  0.03,  0.04,  0.04,  0.04,  0.04,
             0.03,  0.03,  0.03,  0.03,  0.03,  0.03,  0.02,  0.02,  0.02,
@@ -305,6 +393,14 @@ Highcharts.chart('first-left', {
         color: 'black',
         pointStart: Date.UTC(2019, 9, 20, 7),
         pointInterval: 1 * 3600 * 500,
+        marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: false
+              }
+            }
+        },
         data: [5539.52, 5490.35, 5314.51, 5258.84, 5171.35, 4992.86, 4916.69,
             4879.87, 4952.39, 5038.87, 5361.68, 5654.32, 5780.79, 5909.56,
             5858.18, 5803.63, 5698.12, 5698.76, 5800.83, 5773.04, 5739.41,
@@ -353,6 +449,112 @@ Highcharts.chart('first-left', {
             3829.06, 3881.88, 3971.61, 4350.48, 4721.78, 4945.13, 4937.67,
             4933.39, 4907.18, 4905.08, 4904.16, 4902.88, 4929.43, 4947.34,
             4932.46, 5000.68, 5007.31, 4982.63, 4927.16, 4972.72, 5038.57]
+    }, {
+        name: 'Exports',
+        color: 'mediumpurple',
+        pointStart: Date.UTC(2019, 9, 20, 7),
+        pointInterval: 1 * 3600 * 500,
+        data: [   0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,  -15.37,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+          -42.74,    0.  ,    0.  ,    0.  ,  -75.47, -204.81,  -68.68,
+         -210.17,  -41.84,    0.  ,    0.  ,    0.  ,   -8.86,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+          -17.08,    0.  ,    0.  ,    0.  ,  -25.29,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,  -48.1 ,  -62.68, -206.92, -181.38, -342.29, -231.85,
+         -108.79, -167.11, -134.66,   -5.2 , -217.64, -265.94, -169.37,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,  -14.5 ,  -54.34,
+            0.  , -131.6 , -237.88,  -57.32,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+          -56.54,  -94.99, -154.94,  -99.86, -140.99, -214.12, -131.87,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  , -212.24, -229.52, -286.43,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  , -159.98,  -72.57,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+            0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ]
+    }, {
+        name: 'Pumps',
+        color: '#13b4ff',
+        pointStart: Date.UTC(2019, 9, 20, 7),
+        pointInterval: 1 * 3600 * 500,
+        data: [-198.29, -199.48, -199.09, -199.49, -198.05, -201.13, -200.23,
+            -200.53, -200.88, -198.73, -200.73,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+             -80.74,  -80.74,  -80.84,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,  -80.54,
+             -79.86,  -80.93,  -79.66, -122.23, -121.99, -122.38, -122.23,
+            -123.06, -123.26,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,  -80.54,
+             -79.66,  -79.27,  -80.84,  -80.93,  -81.23,  -80.25,  -79.08,
+             -80.15,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+             -80.35,  -80.05,  -80.44,  -80.54,  -80.84,  -81.03,  -80.74,
+             -80.44,  -80.35,  -80.44,  -80.35, -122.47, -121.65, -122.33,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,  -79.57, -121.06, -123.26, -121.4 ,
+            -122.04, -121.74, -122.43, -122.18,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,  -80.44,
+            -157.85, -157.06, -158.85, -157.37, -159.75, -157.34,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,  -79.76,  -80.44, -358.25,
+            -357.48, -594.09, -598.83, -593.55, -595.04, -401.58, -199.64,
+            -201.09, -201.88, -201.98, -201.08, -198.92, -198.7 , -199.  ,
+            -201.68, -402.58, -403.33, -399.54, -397.7 , -200.6 , -202.63,
+            -403.63, -400.2 , -400.54, -199.31, -201.14, -200.76,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  ,
+               0.  ,    0.  ,    0.  ,    0.  ,    0.  ,    0.  , -159.25,
+            -158.15, -158.57, -158.95, -159.74, -158.85, -159.25,  -79.57,
+             -80.35,  -81.33,  -80.84,  -80.35,  -79.66, -123.41, -199.25,
+            -202.13, -200.78, -199.4 , -201.87, -200.18, -200.58, -200.38,
+            -200.53, -200.38, -200.73, -197.71, -199.2 , -201.33, -200.58,
+            -200.48, -201.77, -200.63, -198.59, -200.38, -200.28,  -42.18,
+             -41.98,  -41.79,  -42.08,  -42.03,  -41.69,  -41.83,  -42.03,
+            -199.91, -201.48, -200.64, -201.08, -201.13, -198.2 , -201.83]
     }]
 });
 
@@ -400,7 +602,6 @@ Highcharts.chart('second-left', {
             }
         }
     },
-
 
     tooltip: {
         positioner: function () {
@@ -512,6 +713,7 @@ Highcharts.chart('third-left', {
             };
         },
         formatter: function() {
+            document.getElementById('av-value').innerHTML = '$'+this.y+'.00';
             return Highcharts.dateFormat('%e %b, %I:%M%p', this.x) +' Av '+ this.y+'F';
         },
         borderWidth: 0,
@@ -620,4 +822,77 @@ function syncExtremes(e) {
             }
         });
     }
-}
+};
+
+Highcharts.chart('second-right', {
+    chart: {
+        type: 'pie',
+        backgroundColor: 'transparent'
+    },
+    title: {
+        text: ''
+    },
+    
+    plotOptions: {
+        pie: {
+            shadow: false,
+            center: ['50%', '50%']
+        }
+    },
+    tooltip: {
+        valueSuffix: '%'
+    },
+    series: [{
+        name: 'Solar',
+        data: function () {
+            return document.getElementById('solar-value').innerHTML;},
+        size: '45%'
+    }, {
+        name: 'Wind',
+        data: document.getElementById('wind-value').innerHTML,
+        size: '80%',
+        innerSize: '45%',
+        id: 'versions'
+    }, {
+        name: 'Hydro',
+        data: document.getElementById('wind-value').innerHTML,
+        size: '80%',
+        innerSize: '45%',
+        id: 'versions'
+    }, {
+        name: 'Gas',
+        data: document.getElementById('wind-value').innerHTML,
+        size: '80%',
+        innerSize: '45%',
+        id: 'versions'
+    }, {
+        name: 'Distillate',
+        data: document.getElementById('wind-value').innerHTML,
+        size: '80%',
+        innerSize: '45%',
+        id: 'versions'
+    }, {
+        name: 'Coal',
+        data: document.getElementById('wind-value').innerHTML,
+        size: '80%',
+        innerSize: '45%',
+        id: 'versions'
+    }],
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 400
+            },
+            chartOptions: {
+                series: [{
+                }, {
+                    id: 'versions',
+                    dataLabels: {
+                        enabled: false
+                    }
+                }]
+            }
+        }]
+    }
+});
+

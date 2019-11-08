@@ -5,26 +5,149 @@
 </head>
 <body>
     <h2>Energy Springfield</h2>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
     <div id="charts">
-        <div id="first-left">  
+        <div id="left-section">
+            <div id="first-left">  
 
+            </div>
+
+            <div id="second-left">
+
+            </div>
+
+            <div id="third-left">
+            </div>
         </div>
 
-        <div id="second-left">
+        <div id="right-section">
+            <div id="first-right">
+                <p>-</p>
+                <table id="sources-table">
+                    <tr class="header">
+                        <td>
+                            <div class="source-colors"></div>
+                            <span class="header-category"></span>
+                        </td>
+                        <td><span class="header-data"><b>Power</b> MW</span></td>
+                        <td><span class="header-data"><b>Contribution</b> to demand</span></td>
+                        <td><span class="final-data"><b>Av.Value</b> $/MWh</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors"></div>
+                            <span class="category"><b>Sources</b></span>
+                        </td>
+                        
+                        <td><span id="sources-value" class="value bold">-</span></td>
+                        <td><span class="value"></span></td>
+                        <td><span id="av-value" class="value last bold">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors yellow"></div>
+                            <span class="category">Solar (Rooftop)</span>
+                        </td>
+                        <td><span id="solar-value" class="value">-</span></td>
+                        <td><span id="solar-percent" class="value">-</span></td>
+                        <td><span class="value last">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors green"></div>
+                            <span class="category">Wind</span>
+                        </td>
+                        <td><span id="wind-value" class="value">-</span></td>
+                        <td><span id="wind-percent" class="value">-</span></td>
+                        <td><span class="value last">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors steelblue"></div>
+                            <span class="category">Hydro</span>
+                        </td>
+                        <td><span id="hydro-value" class="value">-</span></td>
+                        <td><span id="hydro-percent" class="value">-</span></td>
+                        <td><span class="value last">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors sandybrown"></div>
+                            <span class="category">Gas (CCGT)</span>
+                        </td>
+                        <td><span id="gas-value" class="value">-</span></td>
+                        <td><span id="gas-percent" class="value">-</span></td>
+                        <td><span class="value last">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors red"></div>
+                            <span class="category">Distillate</span>
+                        </td>
+                        <td><span id="distillate-value" class="value">-</span></td>
+                        <td><span id="distillate-percent" class="value">-</span></td>
+                        <td><span class="value last">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors black"></div>
+                            <span class="category">Black Coal</span>
+                        </td>
+                        <td><span id="coal-value" class="value">-</span></td>
+                        <td><span id="coal-percent" class="value">-</span></td>
+                        <td><span class="value last">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors"></div>
+                            <span class="category"><b>Loads</b></span>
+                        </td>
+                        <td><span id="load-value" class="value">-</span></td>
+                        <td><span class="value"></span></td>
+                        <td><span class="value last"></span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors mediumpurple"></div>
+                            <span class="category">Exports</span>
+                        </td>
+                        <td><span id="export-value" class="value">-</span></td>
+                        <td><span id="export-percent" class="value">-</span></td>
+                        <td><span class="value last">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors blue"></div>
+                            <span class="category">Pumps</p>
+                        </td>
+                        <td><span id="pump-value" class="value">-</span></td>
+                        <td><span id="pump-percent" class="value">-</span></td>
+                        <td><span class="value last">-</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="source-colors"></div>
+                            <span class="category"><b>Net</b></span>
+                        </td>
+                        <td><span id="total-power" class="value bold">-</span></td>
+                        <td><span class="value"></span></td>
+                        <td><span class="value last"></span></td>
+                    </tr>
+                    <tr class="final-row">
+                        <td>
+                            <div class="source-colors"></div>
+                            <span class="category">Renewables</span>
+                        </td>
+                        <td><span class="value"></span></td>
+                        <td><span id="renewables-percent" class="value">-</span></td>
+                        <td><span class="value last"></span></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="second-right">
 
-        </div>
-
-        <div id="third-left">
-
-        </div>
-
-        <div id="first-right">
-
-        </div>
-        
-        <div id="second-right">
-
+            </div>
         </div>
     </div>
     <script src="main.js"></script>

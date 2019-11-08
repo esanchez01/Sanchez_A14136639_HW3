@@ -13,3 +13,123 @@ h2 {
     margin-left: 2em;
     margin-top: 1em;
 }
+
+#left-section {
+    float: left;
+    width: 70%;
+}
+
+#right-section {
+    float: left;
+    width: 30%;
+    height: 100%;
+}
+
+#right-section span {
+    float: right;
+    margin-bottom: .25em;
+}
+
+#first-right p {
+  margin-bottom: .2em;
+}
+
+#sources-table {
+    width: 96%;
+    margin-left: .25em;
+    margin-top: 1.5em;
+    border-top: 2px solid;
+    font-size: 13.5px;
+}
+
+#sources-table tr {
+    border-bottom: .5px solid #ddd;
+    float: left;
+    height: 1.75em;
+}
+
+.source-colors {
+    float: left;
+    width: 13px;
+    height: 14px;
+}
+
+.header {
+  height: 2.5em !important;
+}
+
+.header-category {
+  width: 10em;
+}
+
+.header-data {
+  width: 4.5em;
+  margin-left: 3.25em;
+  margin-right: -3em;
+}
+
+.final-data {
+  width: 4.5em;
+  margin-left: 6em;
+}
+
+tr {
+  width: 100%;
+}
+  
+.yellow {
+  background: yellow;
+}
+  
+.green {
+  background: green;
+}
+  
+.steelblue {
+  background: steelblue;
+}
+
+.sandybrown {
+  background: sandybrown;
+}
+  
+.red {
+  background: red;
+}
+  
+.black {
+  background: black;
+}
+
+.blue {
+  background: #13b4ff;
+}
+  
+.mediumpurple {
+  background: mediumpurple;
+}
+
+.category {
+  width: 13.5em;
+  margin-left: .25em;
+}
+
+.value {
+  width: 3.5em;
+  margin-right: 2.25em;
+  margin-bottom: .75em !important;
+}
+
+.last {
+  width: 0;
+  margin-right: 0;
+}
+
+.final-row {
+  border-bottom: 2px solid !important;
+  border-top: 2px solid;
+}
+
+.bold {
+  font-weight: bold;
+}
