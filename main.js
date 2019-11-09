@@ -77,26 +77,47 @@ Highcharts.chart('first-left', {
             };
         },
         formatter: function() {
-            document.getElementById('total-power').innerHTML = this.total.toFixed(2)
-            document.getElementById('solar-value').innerHTML = this.series.chart.series[0].processedYData[this.point.index].toFixed(0)
-            document.getElementById('solar-percent').innerHTML = ((this.series.chart.series[0].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
-            document.getElementById('wind-value').innerHTML = this.series.chart.series[1].processedYData[this.point.index].toFixed(0)
-            document.getElementById('wind-percent').innerHTML = ((this.series.chart.series[1].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
-            document.getElementById('hydro-value').innerHTML = this.series.chart.series[2].processedYData[this.point.index].toFixed(0)
-            document.getElementById('hydro-percent').innerHTML = ((this.series.chart.series[2].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
-            document.getElementById('gas-value').innerHTML = this.series.chart.series[3].processedYData[this.point.index].toFixed(0)
-            document.getElementById('gas-percent').innerHTML = ((this.series.chart.series[3].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
-            document.getElementById('distillate-value').innerHTML = this.series.chart.series[4].processedYData[this.point.index].toFixed(2)
-            document.getElementById('distillate-percent').innerHTML = ((this.series.chart.series[4].processedYData[this.point.index]/this.total)*100).toFixed(4)+'%'
-            document.getElementById('coal-value').innerHTML = this.series.chart.series[5].processedYData[this.point.index].toFixed(0)
-            document.getElementById('coal-percent').innerHTML = ((this.series.chart.series[5].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
-            document.getElementById('export-value').innerHTML = this.series.chart.series[6].processedYData[this.point.index].toFixed(0)
-            document.getElementById('export-percent').innerHTML = ((this.series.chart.series[6].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
-            document.getElementById('pump-value').innerHTML = this.series.chart.series[7].processedYData[this.point.index].toFixed(0)
-            document.getElementById('pump-percent').innerHTML = ((this.series.chart.series[7].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%'
-            document.getElementById('load-value').innerHTML = (this.series.chart.series[6].processedYData[this.point.index]+this.series.chart.series[7].processedYData[this.point.index]).toFixed(0)
-            document.getElementById('renewables-percent').innerHTML = (((this.series.chart.series[0].processedYData[this.point.index]/this.total)*100)+((this.series.chart.series[1].processedYData[this.point.index]/this.total)*100)+((this.series.chart.series[2].processedYData[this.point.index]/this.total)*100)).toFixed(1)+'%'
-            document.getElementById('sources-value').innerHTML = (this.series.chart.series[0].processedYData[this.point.index]+this.series.chart.series[1].processedYData[this.point.index]+this.series.chart.series[2].processedYData[this.point.index]+this.series.chart.series[3].processedYData[this.point.index]+this.series.chart.series[4].processedYData[this.point.index]+this.series.chart.series[5].processedYData[this.point.index]).toFixed(0)
+            document.getElementById('total-power').innerHTML = this.total.toFixed(2);
+
+            document.getElementById('solar-value').innerHTML = this.series.chart.series[0].processedYData[this.point.index].toFixed(0);
+            document.getElementById('solar-percent').innerHTML = ((this.series.chart.series[0].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+            document.getElementsByClassName('source-colors yellow bar')[0].style.width = ((this.series.chart.series[0].processedYData[this.point.index]/this.total)*100).toFixed(1) + 'px';
+            document.getElementsByClassName('solar-bar-percent')[0].innerHTML = ((this.series.chart.series[0].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+
+            document.getElementById('wind-value').innerHTML = this.series.chart.series[1].processedYData[this.point.index].toFixed(0);
+            document.getElementById('wind-percent').innerHTML = ((this.series.chart.series[1].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+            document.getElementsByClassName('source-colors green bar')[0].style.width = ((this.series.chart.series[1].processedYData[this.point.index]/this.total)*100).toFixed(1) + 'px';
+            document.getElementsByClassName('wind-bar-percent')[0].innerHTML = ((this.series.chart.series[1].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+
+            document.getElementById('hydro-value').innerHTML = this.series.chart.series[2].processedYData[this.point.index].toFixed(0);
+            document.getElementById('hydro-percent').innerHTML = ((this.series.chart.series[2].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+            document.getElementsByClassName('source-colors steelblue bar')[0].style.width = ((this.series.chart.series[2].processedYData[this.point.index]/this.total)*100).toFixed(1) + 'px';
+            document.getElementsByClassName('hydro-bar-percent')[0].innerHTML = ((this.series.chart.series[2].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+
+            document.getElementById('gas-value').innerHTML = this.series.chart.series[3].processedYData[this.point.index].toFixed(0);
+            document.getElementById('gas-percent').innerHTML = ((this.series.chart.series[3].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+            document.getElementsByClassName('source-colors sandybrown bar')[0].style.width = ((this.series.chart.series[3].processedYData[this.point.index]/this.total)*100).toFixed(1) + 'px';
+            document.getElementsByClassName('gas-bar-percent')[0].innerHTML = ((this.series.chart.series[3].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+
+            document.getElementById('distillate-value').innerHTML = this.series.chart.series[4].processedYData[this.point.index].toFixed(2);
+            document.getElementById('distillate-percent').innerHTML = ((this.series.chart.series[4].processedYData[this.point.index]/this.total)*100).toFixed(4)+'%';
+            document.getElementsByClassName('source-colors red bar')[0].style.width = ((this.series.chart.series[4].processedYData[this.point.index]/this.total)*100).toFixed(1) + 'px';
+            document.getElementsByClassName('distillate-bar-percent')[0].innerHTML = ((this.series.chart.series[4].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+
+            document.getElementById('coal-value').innerHTML = this.series.chart.series[5].processedYData[this.point.index].toFixed(0);
+            document.getElementById('coal-percent').innerHTML = ((this.series.chart.series[5].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+            document.getElementsByClassName('source-colors black bar')[0].style.width = ((this.series.chart.series[5].processedYData[this.point.index]/this.total)*100).toFixed(1) + 'px';
+            document.getElementsByClassName('coal-bar-percent')[0].innerHTML = ((this.series.chart.series[5].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+
+            document.getElementById('export-value').innerHTML = this.series.chart.series[6].processedYData[this.point.index].toFixed(0);
+            document.getElementById('export-percent').innerHTML = ((this.series.chart.series[6].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+
+            document.getElementById('pump-value').innerHTML = this.series.chart.series[7].processedYData[this.point.index].toFixed(0);
+            document.getElementById('pump-percent').innerHTML = ((this.series.chart.series[7].processedYData[this.point.index]/this.total)*100).toFixed(1)+'%';
+
+            document.getElementById('load-value').innerHTML = (this.series.chart.series[6].processedYData[this.point.index]+this.series.chart.series[7].processedYData[this.point.index]).toFixed(0);
+            document.getElementById('renewables-percent').innerHTML = (((this.series.chart.series[0].processedYData[this.point.index]/this.total)*100)+((this.series.chart.series[1].processedYData[this.point.index]/this.total)*100)+((this.series.chart.series[2].processedYData[this.point.index]/this.total)*100)).toFixed(1)+'%';
+            document.getElementById('sources-value').innerHTML = (this.series.chart.series[0].processedYData[this.point.index]+this.series.chart.series[1].processedYData[this.point.index]+this.series.chart.series[2].processedYData[this.point.index]+this.series.chart.series[3].processedYData[this.point.index]+this.series.chart.series[4].processedYData[this.point.index]+this.series.chart.series[5].processedYData[this.point.index]).toFixed(0);
             return Highcharts.dateFormat('%e %b, %I:%M%p', this.x) + ' Total:' + this.total + 'MW'
         },
         backgroundColor: 'None',
@@ -612,6 +633,7 @@ Highcharts.chart('second-left', {
             };
         },
         formatter: function() {
+            document.getElementById('av-value').innerHTML = '$'+this.y+'.00';
             return Highcharts.dateFormat('%e %b, %I:%M%p', this.x)+' $'+this.y+'.00';
         },
         borderWidth: 0,
@@ -713,7 +735,6 @@ Highcharts.chart('third-left', {
             };
         },
         formatter: function() {
-            document.getElementById('av-value').innerHTML = '$'+this.y+'.00';
             return Highcharts.dateFormat('%e %b, %I:%M%p', this.x) +' Av '+ this.y+'F';
         },
         borderWidth: 0,
@@ -824,13 +845,19 @@ function syncExtremes(e) {
     }
 };
 
-Highcharts.chart('second-right', {
+Highcharts.chart('pie-chart', {
     chart: {
         type: 'pie',
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        width: 400
+
     },
     title: {
         text: ''
+    },
+
+    credits: {
+        enabled: false
     },
     
     plotOptions: {
@@ -839,44 +866,46 @@ Highcharts.chart('second-right', {
             center: ['50%', '50%']
         }
     },
+
     tooltip: {
         valueSuffix: '%'
     },
+
     series: [{
-        name: 'Solar',
-        data: function () {
-            return document.getElementById('solar-value').innerHTML;},
-        size: '45%'
-    }, {
-        name: 'Wind',
-        data: document.getElementById('wind-value').innerHTML,
-        size: '80%',
-        innerSize: '45%',
-        id: 'versions'
-    }, {
-        name: 'Hydro',
-        data: document.getElementById('wind-value').innerHTML,
-        size: '80%',
-        innerSize: '45%',
-        id: 'versions'
-    }, {
-        name: 'Gas',
-        data: document.getElementById('wind-value').innerHTML,
-        size: '80%',
-        innerSize: '45%',
-        id: 'versions'
-    }, {
-        name: 'Distillate',
-        data: document.getElementById('wind-value').innerHTML,
-        size: '80%',
-        innerSize: '45%',
-        id: 'versions'
-    }, {
-        name: 'Coal',
-        data: document.getElementById('wind-value').innerHTML,
-        size: '80%',
-        innerSize: '45%',
-        id: 'versions'
+            name: 'Solar',
+            data: function () {
+                return document.getElementById('solar-value').innerHTML;},
+            size: '45%'
+        }, {
+            name: 'Wind',
+            data: document.getElementById('wind-value').innerHTML,
+            size: '75%',
+            innerSize: '10%',
+            id: 'versions'
+        }, {
+            name: 'Hydro',
+            data: document.getElementById('wind-value').innerHTML,
+            size: '75%',
+            innerSize: '10%',
+            id: 'versions'
+        }, {
+            name: 'Gas',
+            data: document.getElementById('wind-value').innerHTML,
+            size: '75%',
+            innerSize: '10%',
+            id: 'versions'
+        }, {
+            name: 'Distillate',
+            data: document.getElementById('wind-value').innerHTML,
+            size: '75%',
+            innerSize: '10%',
+            id: 'versions'
+        }, {
+            name: 'Coal',
+            data: document.getElementById('wind-value').innerHTML,
+            size: '75%',
+            innerSize: '10%',
+            id: 'versions'
     }],
     responsive: {
         rules: [{
@@ -895,4 +924,18 @@ Highcharts.chart('second-right', {
         }]
     }
 });
+
+function radioTrigger(e) {
+    var x = document.getElementById("radio-one");
+    var y = document.getElementById("radio-two");
+    if (x.checked === true) {
+        document.getElementById("sources-bar").style.display = "block";
+        document.getElementById("pie-chart").style.display = "none";
+    } 
+    if (y.checked === true){
+        document.getElementById("sources-bar").style.display = "none";
+        document.getElementById("pie-chart").style.display = "block";
+
+    }
+  }
 

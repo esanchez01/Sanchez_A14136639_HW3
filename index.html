@@ -6,7 +6,6 @@
 <body>
     <h2>Energy Springfield</h2>
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
     <div id="charts">
         <div id="left-section">
             <div id="first-left">  
@@ -147,6 +146,72 @@
             </div>
             <div id="second-right">
 
+                <form class="form">
+                    <div class="switch-field">
+                        <input type="radio" id="radio-one"  onclick="radioTrigger(1);" name="switch-one" value="yes" checked/>
+                        <label for="radio-one">Bar</label>
+                        <input type="radio" id="radio-two" onclick="radioTrigger(2);" name="switch-one" value="no" />
+                        <label for="radio-two">Pie</label>
+                    </div>
+
+                <div id="pie-chart">
+
+                </div>
+
+                <table id="sources-bar">
+                    <tr>
+                        <td>
+                            <span class="category">Solar (Rooftop)</span>
+                        </td>
+                        <td><div class="source-colors yellow bar"></div></td>
+                        <td><div class="solar-bar-percent">-</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="category">Wind</span>
+                        </td>
+                        <td>
+                            <div class="source-colors green bar"></div>
+                            <td><div class="wind-bar-percent">-</div></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="category">Hydro</span>
+                        </td>
+                        <td>
+                            <div class="source-colors steelblue bar"></div>
+                            <td><div class="hydro-bar-percent">-</div></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="category">Gas (CCGT)</span>
+                        </td>
+                        <td>
+                            <div class="source-colors sandybrown bar"></div>
+                            <td><div class="gas-bar-percent">-</div></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="category">Distillate</span>
+                        </td>
+                        <td>
+                            <div class="source-colors red bar"></div>
+                            <td><div class="distillate-bar-percent">-</div></td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="category">Black Coal</span>
+                        </td>
+                        <td>
+                            <div class="source-colors black bar"></div>
+                            <td><div class="coal-bar-percent">-</div></td>
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
