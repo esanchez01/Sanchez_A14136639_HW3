@@ -5,7 +5,8 @@ html, body {
     width: 100%; 
     height: 100%; 
     padding: 0; 
-    margin: 0
+    margin: 0;
+    font-family: "IBM Plex Serif",Georgia,Times New Roman,Times,serif;
 }
 
 h2 {
@@ -17,6 +18,10 @@ h2 {
 #left-section {
     float: left;
     width: 70%;
+}
+
+#first-left {
+  margin-right: 0
 }
 
 #right-section {
@@ -37,7 +42,7 @@ h2 {
 #sources-table {
     width: 96%;
     margin-left: .25em;
-    margin-top: 1.5em;
+    margin-top: .75em;
     border-top: 2px solid;
     font-size: 13.5px;
 }
@@ -48,16 +53,22 @@ h2 {
     height: 1.75em;
 }
 
+#table-date {
+  text-align: right;
+  margin-right: 1em;
+  margin-bottom: 0em;
+}
+
 .header {
   height: 2.5em !important;
 }
 
 .header-category {
-  width: 10em;
+  width: 8em;
 }
 
 .header-data {
-  width: 4.5em;
+  width: 5em;
   margin-left: 3.25em;
   margin-right: -3em;
 }
@@ -110,14 +121,18 @@ tr {
 }
 
 .category {
-  width: 13.5em;
+  width: 10em;
   margin-left: .25em;
 }
 
 .value {
-  width: 3.5em;
-  margin-right: 2.25em;
+  width: 4em;
+  margin-right: 2.5em;
   margin-bottom: .75em !important;
+}
+
+.second{
+  margin-right: 3em !important;
 }
 
 .last {
@@ -152,12 +167,22 @@ tr {
   text-align: right;
   font-weight: bold;
   margin-right: 1em;
-  margin-left: 2em;
+  margin-left: 3.25em;
+}
+
+#pie-image {
+  width: 1.5em;
+}
+
+#bar-image {
+  width: 1.25em;
+  margin-top: 1.5px;
 }
 
 .switch-field {
-  margin-top: .5em;
-  margin-left: 10.75em;
+  margin-top: 1.5em;
+  margin-left: 10em;
+  margin-bottom: 0em;
   display: flex;
   overflow: hidden;
 }
@@ -175,9 +200,9 @@ tr {
   background-color: #e4e4e4;
   color: rgba(0, 0, 0, 0.6);
   font-size: 14px;
-  line-height: 1;
+  line-height: .1;
   text-align: center;
-  padding: 8px 16px;
+  padding: 4px 15px;
   margin-right: -1px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
@@ -203,6 +228,7 @@ tr {
 
 #pie-chart {
   display:none;
-  margin-top: -3em;
-  margin-left: 1.5em;
+  margin-top: 0em;
+  margin-left: .65em;
+  padding: 0;
 }

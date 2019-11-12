@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="main.css">
+    <title>Springfield Energy Production & Consumption</title>
 </head>
 <body>
-    <h2>Energy Springfield</h2>
+    <h2>Springfield Energy Production & Consumption</h2>
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <div id="charts">
         <div id="left-section">
@@ -22,7 +24,7 @@
 
         <div id="right-section">
             <div id="first-right">
-                <p>-</p>
+                <p id='table-date'>-</p>
                 <table id="sources-table">
                     <tr class="header">
                         <td>
@@ -40,7 +42,7 @@
                         </td>
                         
                         <td><span id="sources-value" class="value bold">-</span></td>
-                        <td><span class="value"></span></td>
+                        <td><span class="value second"></span></td>
                         <td><span id="av-value" class="value last bold">-</span></td>
                     </tr>
                     <tr>
@@ -49,7 +51,7 @@
                             <span class="category">Solar (Rooftop)</span>
                         </td>
                         <td><span id="solar-value" class="value">-</span></td>
-                        <td><span id="solar-percent" class="value">-</span></td>
+                        <td><span id="solar-percent" class="value second">-</span></td>
                         <td><span class="value last">-</span></td>
                     </tr>
                     <tr>
@@ -58,7 +60,7 @@
                             <span class="category">Wind</span>
                         </td>
                         <td><span id="wind-value" class="value">-</span></td>
-                        <td><span id="wind-percent" class="value">-</span></td>
+                        <td><span id="wind-percent" class="value second">-</span></td>
                         <td><span class="value last">-</span></td>
                     </tr>
                     <tr>
@@ -67,7 +69,7 @@
                             <span class="category">Hydro</span>
                         </td>
                         <td><span id="hydro-value" class="value">-</span></td>
-                        <td><span id="hydro-percent" class="value">-</span></td>
+                        <td><span id="hydro-percent" class="value second">-</span></td>
                         <td><span class="value last">-</span></td>
                     </tr>
                     <tr>
@@ -76,7 +78,7 @@
                             <span class="category">Gas (CCGT)</span>
                         </td>
                         <td><span id="gas-value" class="value">-</span></td>
-                        <td><span id="gas-percent" class="value">-</span></td>
+                        <td><span id="gas-percent" class="value second">-</span></td>
                         <td><span class="value last">-</span></td>
                     </tr>
                     <tr>
@@ -85,7 +87,7 @@
                             <span class="category">Distillate</span>
                         </td>
                         <td><span id="distillate-value" class="value">-</span></td>
-                        <td><span id="distillate-percent" class="value">-</span></td>
+                        <td><span id="distillate-percent" class="value second">-</span></td>
                         <td><span class="value last">-</span></td>
                     </tr>
                     <tr>
@@ -94,7 +96,7 @@
                             <span class="category">Black Coal</span>
                         </td>
                         <td><span id="coal-value" class="value">-</span></td>
-                        <td><span id="coal-percent" class="value">-</span></td>
+                        <td><span id="coal-percent" class="value second">-</span></td>
                         <td><span class="value last">-</span></td>
                     </tr>
                     <tr>
@@ -103,7 +105,7 @@
                             <span class="category"><b>Loads</b></span>
                         </td>
                         <td><span id="load-value" class="value">-</span></td>
-                        <td><span class="value"></span></td>
+                        <td><span class="value second"></span></td>
                         <td><span class="value last"></span></td>
                     </tr>
                     <tr>
@@ -112,16 +114,16 @@
                             <span class="category">Exports</span>
                         </td>
                         <td><span id="export-value" class="value">-</span></td>
-                        <td><span id="export-percent" class="value">-</span></td>
+                        <td><span id="export-percent" class="value second">-</span></td>
                         <td><span class="value last">-</span></td>
                     </tr>
                     <tr>
                         <td>
                             <div class="source-colors blue"></div>
-                            <span class="category">Pumps</p>
+                            <span class="category">Pumps</span>
                         </td>
                         <td><span id="pump-value" class="value">-</span></td>
-                        <td><span id="pump-percent" class="value">-</span></td>
+                        <td><span id="pump-percent" class="value second">-</span></td>
                         <td><span class="value last">-</span></td>
                     </tr>
                     <tr>
@@ -130,7 +132,7 @@
                             <span class="category"><b>Net</b></span>
                         </td>
                         <td><span id="total-power" class="value bold">-</span></td>
-                        <td><span class="value"></span></td>
+                        <td><span class="value second"></span></td>
                         <td><span class="value last"></span></td>
                     </tr>
                     <tr class="final-row">
@@ -139,7 +141,7 @@
                             <span class="category">Renewables</span>
                         </td>
                         <td><span class="value"></span></td>
-                        <td><span id="renewables-percent" class="value">-</span></td>
+                        <td><span id="renewables-percent" class="value second">-</span></td>
                         <td><span class="value last"></span></td>
                     </tr>
                 </table>
@@ -148,11 +150,12 @@
 
                 <form class="form">
                     <div class="switch-field">
-                        <input type="radio" id="radio-one"  onclick="radioTrigger(1);" name="switch-one" value="yes" checked/>
-                        <label for="radio-one">Bar</label>
+                        <input type="radio" id="radio-one" onclick="radioTrigger(1);" name="switch-one" value="yes" checked/>
+                        <label for="radio-one"><img id="bar-image" src="assets/bar-chart.png" alt="bar-chart"></label>
                         <input type="radio" id="radio-two" onclick="radioTrigger(2);" name="switch-one" value="no" />
-                        <label for="radio-two">Pie</label>
+                        <label for="radio-two"><img id="pie-image" src="assets/pie-chart.png" alt="pie-chart"></label>
                     </div>
+                </form>
 
                 <div id="pie-chart">
 
@@ -170,46 +173,36 @@
                         <td>
                             <span class="category">Wind</span>
                         </td>
-                        <td>
-                            <div class="source-colors green bar"></div>
-                            <td><div class="wind-bar-percent">-</div></td>
-                        </td>
+                        <td><div class="source-colors green bar"></div></td>
+                        <td><div class="wind-bar-percent">-</div></td>
                     </tr>
                     <tr>
                         <td>
                             <span class="category">Hydro</span>
                         </td>
-                        <td>
-                            <div class="source-colors steelblue bar"></div>
-                            <td><div class="hydro-bar-percent">-</div></td>
-                        </td>
+                        <td><div class="source-colors steelblue bar"></div></td>
+                        <td><div class="hydro-bar-percent">-</div></td>
                     </tr>
                     <tr>
                         <td>
                             <span class="category">Gas (CCGT)</span>
                         </td>
-                        <td>
-                            <div class="source-colors sandybrown bar"></div>
-                            <td><div class="gas-bar-percent">-</div></td>
-                        </td>
+                        <td><div class="source-colors sandybrown bar"></div></td>
+                        <td><div class="gas-bar-percent">-</div></td>
                     </tr>
                     <tr>
                         <td>
                             <span class="category">Distillate</span>
                         </td>
-                        <td>
-                            <div class="source-colors red bar"></div>
-                            <td><div class="distillate-bar-percent">-</div></td>
-                        </td>
+                        <td><div class="source-colors red bar"></div></td>
+                        <td><div class="distillate-bar-percent">-</div></td>
                     </tr>
                     <tr>
                         <td>
                             <span class="category">Black Coal</span>
                         </td>
-                        <td>
-                            <div class="source-colors black bar"></div>
-                            <td><div class="coal-bar-percent">-</div></td>
-                        </td>
+                        <td><div class="source-colors black bar"></div></td>
+                        <td><div class="coal-bar-percent">-</div></td>
                     </tr>
                 </table>
             </div>
