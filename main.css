@@ -10,7 +10,7 @@ html, body {
 }
 
 h2 {
-    font-family: Playfair Display,Georgia,Times New Roman,Times,serif;
+    font-family: "Playfair Display",Georgia,Times New Roman,Times,serif;
     margin-top: 1em;
     margin-bottom: 1em;
     text-align: center;
@@ -61,7 +61,7 @@ h2 {
   margin-right: 1em;
   margin-bottom: 0em;
   font-size: 18px;
-  font-style: bold;
+  font-weight: bold;
 }
 
 .header {
