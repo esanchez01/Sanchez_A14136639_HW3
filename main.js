@@ -10,8 +10,11 @@ chart1 = Highcharts.chart('first-left', {
         backgroundColor: 'transparent'
     },
     title: {
-        text: '<span style="font-weight:bold">Generation</span> MW',
-        align: 'left'
+        text: '<span style="font-weight:bold">Generation & Output</span> MW',
+        align: 'left',
+        style: {
+            fontSize: '20px'
+        }
     },
 
     legend: {
@@ -123,7 +126,6 @@ chart1 = Highcharts.chart('first-left', {
             document.getElementById('table-date').innerHTML =  Highcharts.dateFormat('%e %b, %I:%M%p', this.x);
             updateData()
 
-            return Highcharts.dateFormat('%e %b, %I:%M%p', this.x) + '<br>'+ ' Total: <b>' + this.total.toFixed(0) + 'MW</b>'
         },
         backgroundColor: 'None',
         borderWidth: 0,
@@ -147,13 +149,6 @@ chart1 = Highcharts.chart('first-left', {
               }
             }
         },
-        //point: {
-        //    events: {
-        //       mouseOver: function() {
-        //            document.getElementById('solar-value').innerHTML = this.y;
-        //       }
-        //    },
-        //},
         data: [0,0,0,0,0,0,0,0,0,19.57,69.27,212.11,388.19,599.36,769.74,
             966.56,1138.24,1276.75,1381.1,1435.16,1492.56,1515.24,1521.95,
             1500.13,1474.11,1421.87,1332.08,1222.98,1090.91,933.76,749.95,
@@ -192,13 +187,6 @@ chart1 = Highcharts.chart('first-left', {
               }
             }
         },
-        //point: {
-        //    events: {
-        //       mouseOut: function() {
-        //            document.getElementById('wind-value').innerHTML = this.y;
-        //       }
-        //    }
-        //},
         data: []
     }, {
         name: 'Hydro',
@@ -264,7 +252,7 @@ chart1 = Highcharts.chart('first-left', {
         data: []
     }, {
         name: 'Pumps',
-        color: '#13b4ff',
+        color: '#4ECFFE',
         pointStart: Date.UTC(2019, 9, 20, 7),
         pointInterval: 1 * 3600 * 500,
         data: []
@@ -282,7 +270,10 @@ chart2 = Highcharts.chart('second-left', {
     },
     title: {
         text: '<span style="font-weight:bold">Price</span> $/MWh',
-        align: 'left'
+        align: 'left',
+        style: {
+            fontSize: '20px'
+        }
     },
 
     credits: {
@@ -322,13 +313,19 @@ chart2 = Highcharts.chart('second-left', {
     tooltip: {
         positioner: function () {
             return {
-                x: this.chart.chartWidth - this.label.width,
-                y: 10
+                x: this.chart.chartWidth - this.label.width - 10,
+                y: 30
             };
         },
         formatter: function() {
+            if (document.getElementById('solar-av').innerHTML === '$49.82') {
+                document.getElementById('av-value').innerHTML = '$58.62';
+                return '<b>$'+this.y+'.00</b>';
+            };
             document.getElementById('av-value').innerHTML = '$'+this.y+'.00';
-            return Highcharts.dateFormat('%e %b, %I:%M%p', this.x)+'<br>'+'<b>$'+this.y+'.00</b>';
+
+            //document.getElementById('av-value').innerHTML = '$'+this.y+'.00';
+            return '<b>$'+this.y+'.00</b>';
         },
         borderWidth: 0,
         backgroundColor: 'none',
@@ -389,7 +386,10 @@ chart3 = Highcharts.chart('third-left', {
     },
     title: {
         text: '<span style="font-weight:bold">Temperature</span> °F',
-        align: 'left'
+        align: 'left',
+        style: {
+            fontSize: '20px'
+        }
     },
 
     credits: {
@@ -408,7 +408,7 @@ chart3 = Highcharts.chart('third-left', {
     yAxis: {
         min: 0,
         max: 100,
-        tickAmount: 6,
+        tickAmount: 4,
         title: {
             text: ''
         }
@@ -430,12 +430,12 @@ chart3 = Highcharts.chart('third-left', {
     tooltip: {
         positioner: function () {
             return {
-                x: this.chart.chartWidth - this.label.width,
-                y: 3
+                x: this.chart.chartWidth - this.label.width - 10,
+                y: 5
             };
         },
         formatter: function() {
-            return Highcharts.dateFormat('%e %b, %I:%M%p', this.x) +'<br>'+'<b>Av '+ this.y+'°F</b>';
+            return '<b>Av '+ this.y+'°F</b>';
         },
         borderWidth: 0,
         backgroundColor: 'none',
@@ -524,7 +524,6 @@ Highcharts.Pointer.prototype.reset = function () {
  */
 Highcharts.Point.prototype.highlight = function (event) {
     event = this.series.chart.pointer.normalize(event);
-    //this.onMouseOver(); // Show the hover marker
     this.series.chart.tooltip.refresh(this); // Show the tooltip
     this.series.chart.xAxis[0].drawCrosshair(event, this); // Show the crosshair
 };
@@ -638,7 +637,7 @@ function updateData() {
     var coal = Number(document.getElementById('coal-value').innerHTML);
     chart4.series[0].setData([solar, wind, hydro, gas, distillate, coal])
 
-    chart4.setTitle({text: document.getElementById('total-power').innerHTML+' MW'});
+    chart4.setTitle({text: document.getElementById('sources-value').innerHTML+' MW'});
 
 };
 
@@ -648,14 +647,13 @@ function underSample(arr) {
     for (i = 1; i < arr.length; i=i+6) {
         new_arr.push(arr[i]);
       }
-
     return new_arr
 };
 
 function updateGlobalEnergyData(data) {
-    //solarData = data[7]['values']
     demandData = data[9]['values'];
 
+    chart1.series[0].setData(data[7]['values'])
     chart1.series[1].setData(underSample(data[5]['values']).map(v => parseInt(v, 10)));
     chart1.series[2].setData(underSample(data[3]['values']));
     chart1.series[3].setData(underSample(data[2]['values']));
@@ -690,6 +688,8 @@ function fetchJSONFile(filePath, callbackFunc) {
             if (httpRequest.status === 200 || httpRequest.status === 0) {
                 console.info("Loaded file:", filePath);
                 var data = JSON.parse(httpRequest.responseText);
+                console.log(data)
+                console.log(data)
                 console.debug("Data parsed into valid JSON!");
                 console.debug(data);
                 if (callbackFunc) callbackFunc(data);
@@ -701,6 +701,28 @@ function fetchJSONFile(filePath, callbackFunc) {
     };
     httpRequest.open('GET', filePath);
     httpRequest.send();
+};
+
+function removeAv() {
+    document.getElementById('solar-av').innerHTML = '-';
+    document.getElementById('wind-av').innerHTML = '-';
+    document.getElementById('hydro-av').innerHTML = '-';
+    document.getElementById('gas-av').innerHTML = '-';
+    document.getElementById('distillate-av').innerHTML = '-';
+    document.getElementById('coal-av').innerHTML = '-';
+    document.getElementById('export-av').innerHTML = '-';
+    document.getElementById('pump-av').innerHTML = '-';
+};
+
+function updateAv() {
+    document.getElementById('solar-av').innerHTML = '$49.82';
+    document.getElementById('wind-av').innerHTML = '$56.43';
+    document.getElementById('hydro-av').innerHTML = '$63.96';
+    document.getElementById('gas-av').innerHTML = '$60.22';
+    document.getElementById('distillate-av').innerHTML = '$57.42';
+    document.getElementById('coal-av').innerHTML = '$59.01';
+    document.getElementById('export-av').innerHTML = '$65.36';
+    document.getElementById('pump-av').innerHTML = '$46.49';
 };
 
 // The entrypoint of the script execution

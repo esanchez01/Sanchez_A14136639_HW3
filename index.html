@@ -9,7 +9,7 @@
     <h2>Springfield Energy Production & Consumption</h2>
     <script src="https://code.highcharts.com/stock/highstock.js"></script>
     <div id="charts">
-        <div id="left-section">
+        <div id="left-section" onmouseover="removeAv()">
             <div id="first-left">  
 
             </div>
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div id="right-section">
+        <div id="right-section" onmouseover="updateAv()">
             <div id="first-right">
                 <p id='table-date'>-</p>
                 <table id="sources-table">
@@ -52,7 +52,7 @@
                         </td>
                         <td><span id="solar-value" class="value">-</span></td>
                         <td><span id="solar-percent" class="value second">-</span></td>
-                        <td><span class="value last">-</span></td>
+                        <td><span id="solar-av" class="value last">-</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -61,7 +61,7 @@
                         </td>
                         <td><span id="wind-value" class="value">-</span></td>
                         <td><span id="wind-percent" class="value second">-</span></td>
-                        <td><span class="value last">-</span></td>
+                        <td><span id="wind-av" class="value last">-</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -70,7 +70,7 @@
                         </td>
                         <td><span id="hydro-value" class="value">-</span></td>
                         <td><span id="hydro-percent" class="value second">-</span></td>
-                        <td><span class="value last">-</span></td>
+                        <td><span id="hydro-av" class="value last">-</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -79,7 +79,7 @@
                         </td>
                         <td><span id="gas-value" class="value">-</span></td>
                         <td><span id="gas-percent" class="value second">-</span></td>
-                        <td><span class="value last">-</span></td>
+                        <td><span id="gas-av" class="value last">-</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -88,7 +88,7 @@
                         </td>
                         <td><span id="distillate-value" class="value">-</span></td>
                         <td><span id="distillate-percent" class="value second">-</span></td>
-                        <td><span class="value last">-</span></td>
+                        <td><span id="distillate-av" class="value last">-</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -97,14 +97,14 @@
                         </td>
                         <td><span id="coal-value" class="value">-</span></td>
                         <td><span id="coal-percent" class="value second">-</span></td>
-                        <td><span class="value last">-</span></td>
+                        <td><span id="coal-av" class="value last">-</span></td>
                     </tr>
                     <tr>
                         <td>
                             <div class="source-colors"></div>
                             <span class="category"><b>Loads</b></span>
                         </td>
-                        <td><span id="load-value" class="value">-</span></td>
+                        <td><span id="load-value" class="value bold">-</span></td>
                         <td><span class="value second"></span></td>
                         <td><span class="value last"></span></td>
                     </tr>
@@ -115,7 +115,7 @@
                         </td>
                         <td><span id="export-value" class="value">-</span></td>
                         <td><span id="export-percent" class="value second">-</span></td>
-                        <td><span class="value last">-</span></td>
+                        <td><span id="export-av" class="value last">-</span></td>
                     </tr>
                     <tr>
                         <td>
@@ -124,7 +124,7 @@
                         </td>
                         <td><span id="pump-value" class="value">-</span></td>
                         <td><span id="pump-percent" class="value second">-</span></td>
-                        <td><span class="value last">-</span></td>
+                        <td><span id="pump-av" class="value last">-</span></td>
                     </tr>
                     <tr>
                         <td>
