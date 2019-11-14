@@ -12,7 +12,7 @@ However, there are a few modifications that were made to improve the look and fe
 
 - **Changing the title of the area chart**
 
-  The original area chart's title was simply 'Generation MW'. However, this is inconsistent with the fact that output (loads) are also depicted on the negative portion of the area chart. Therefore, the chart's name was changed to 'Generation & Output MW'.
+  The original area chart's title was simply 'Generation MW'. However, this is inconsistent with the fact that output (loads) are also depicted on the negative portion of the area chart. Therefore, the chart's name was changed to 'Generation & Utilization MW'.
 
 - **Adding appropriate colors to the loads in the area chart**
 

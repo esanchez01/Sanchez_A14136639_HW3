@@ -11,7 +11,7 @@ chart1 = Highcharts.chart('first-left', {
     },
 
     title: {
-        text: '<span style="font-weight:bold">Generation & Output</span> MW',
+        text: '<span style="font-weight:bold">Generation & Utilization</span> MW',
         align: 'left',
         style: {
             fontSize: '20px'
