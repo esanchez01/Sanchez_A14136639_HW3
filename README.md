@@ -1,14 +1,14 @@
 ## Springfield Energy Production & Consumption Dashboard
 
-The purpose of this assignment was to build a dashboard that details the energy consumption and production for the town of Springfield. The dashboard was replicated from [here](https://drive.google.com/file/d/1ecu-bUlnjURqP6_om8RfkK1n6y8PDHrw/view).
+The purpose of this project was to build a dashboard that details the energy consumption and production for the town of Springfield. The dashboard was replicated from [here](https://drive.google.com/file/d/1ecu-bUlnjURqP6_om8RfkK1n6y8PDHrw/view).
 
-Overall, the process was successful as almost all functionality depicted in the link above were achieved. Only component missing is the shading of day and night on the charts. Other functionalities such as the dropdowns or others that are not depicted are not replicated. 
+Overall, the process was successful as almost all functionality depicted in the link above was achieved. Only component missing is the shading of day and night on the charts.
 
 However, there are a few modifications that were made to improve the look and feel of the dashboard. These changes include:
 
 - **Changing the overall title of the dashboard**
   
-  From a user's perspective, the original title 'Energy Springfield' did not seem to reveal exactly what the dashboard was going to demonstrate. Also, the picture of Homer Simpson seems to not depict the 'Energy' aspect of Springfield. Up until I started to exam the dashboard's components did I realize what was being depicted. In order to fix this issue, the title was changed to 'Springfield Energy Production & Consumption'. This title reflects the dashboard's purpose more appropriately and allows the user to know exactly what is depicted in the dashboard from the beginning.
+  From a user's perspective, the original title 'Energy Springfield' did not seem to properly reveal the purpose of the dashboard. Also, the picture of Homer Simpson is not the best picture to represent the 'Energy' aspect of Springfield. Up until I started to exam the dashboard's components did I realize what was being depicted. In order to fix this issue, the title was changed to 'Springfield Energy Production & Consumption'. This title reflects the dashboard's purpose more appropriately and allows the user to know exactly what is depicted from the beginning.
 
 - **Changing the title of the area chart**
 
