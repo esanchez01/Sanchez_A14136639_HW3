@@ -1,6 +1,8 @@
 ## Springfield Energy Production & Consumption Dashboard
 
-The purpose of this project was to build a dashboard that details the energy consumption and production for the town of Springfield. The dashboard was replicated from [here](https://drive.google.com/file/d/1ecu-bUlnjURqP6_om8RfkK1n6y8PDHrw/view).
+This project was developed as an assignment for DSC106: Introduction to Data Visualization. 
+
+The purpose of this project was to practice using HTML, CSS, and JavaScript to build a dashboard that details the energy consumption and production for the town of Springfield. The dashboard was replicated from [here](https://drive.google.com/file/d/1ecu-bUlnjURqP6_om8RfkK1n6y8PDHrw/view).
 
 Overall, the process was successful as almost all functionality depicted in the link above was achieved. Only component missing is the shading of day and night on the charts.
 
